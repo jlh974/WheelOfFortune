@@ -2,6 +2,8 @@
 wheel = ['bankrupt', 'loseTurn', 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 600, 750, 800, 850, 900]
 #create word list
 word = 'test'
+consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z']
+vowels = ['a','e','i','o','u']
 correctLetter = []
 #set up accounts for players' money
 account1 = []
@@ -36,12 +38,15 @@ while not wordSolved:
         else:
             #show letters, multiply wedge by number of instances in word and add to account
             spinInput = (input('Guess a consonant: '))
-            if spinInput in word:
-                for position in range(len(word)):
-                    if word[position] == spinInput:
-                        correctLetter[position] = spinInput
+            if spinInput in consonants:
+                if spinInput in word:
+                    for position in range(len(word)):
+                        if word[position] == spinInput:
+                            correctLetter[position] = spinInput
+                else:
+                    print('That letter is not in the word.')
             else:
-                print('That letter is not in the word.')
+                print('That is not a consonant.  Lose a turn.')
             print(correctLetter)
             print(spinInput)
             

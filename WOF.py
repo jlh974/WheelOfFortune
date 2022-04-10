@@ -6,20 +6,22 @@ consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v
 vowels = ['a','e','i','o','u']
 correctLetter = []
 #set up accounts for players' money
-account1 = []
+account1 = 0
 account2 = []
 account3 = []
+
 import random
 
 wordSolved = False
 
-#initialize blank word list with "_"
-for char in word:
-    correctLetter.append('_')
 
 #Rounds 1 and 2:
 #randomly choose word and display with underscores representing each unrevealed letter
-#def getWord(word):
+#initialize blank word list with "_"
+
+for char in word:
+    correctLetter.append('_')
+
 
 #player 1's turn
 #ask if they want to solve, spin, or buy a vowel
@@ -28,13 +30,16 @@ while not wordSolved:
     #if spin, spins wheel
     if userInput == 's':
         wedge = random.choice(wheel)
+        #loseTurn and money
         print(wedge)
         if wedge == 'bankrupt':
+            account1 == [0]
             print('Lose your turn and money')
-            #loseTurn and money
+            break
+        #loseTurn
         elif wedge == 'lose a turn':
             print('Lose your turn')
-            #loseTurn
+            break
         else:
             #show letters, multiply wedge by number of instances in word and add to account
             spinInput = (input('Guess a consonant: '))
@@ -43,6 +48,8 @@ while not wordSolved:
                     for position in range(len(word)):
                         if word[position] == spinInput:
                             correctLetter[position] = spinInput
+                            account1 += wedge
+                            print('You have $',account1)
                 else:
                     print('That letter is not in the word.')
             else:
@@ -54,7 +61,19 @@ while not wordSolved:
 
     #if buy a vowel, check that account has at least $250
     elif userInput == 'v':
-        print('vowel')
+
+        vowelInput = (input('Guess a vowel: '))
+        if vowelInput in vowels:
+                if vowelInput in word:
+                    for position in range(len(word)):
+                        if word[position] == vowelInput:
+                            correctLetter[position] = vowelInput
+                else:
+                    print('That letter is not in the word.')
+        else:
+                print('That is not a vowel.  Lose a turn.')
+        print(correctLetter)
+        print(vowelInput)
     
     #if solve, compare to word, if correct, round ends, if incorrect, lose turn and move to next player
     elif userInput == 'p':

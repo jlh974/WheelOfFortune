@@ -1,32 +1,35 @@
 #create wheel (contains bankrupt, lose a turn, and 17 dollar amounts)
 wheel = ['bankrupt', 'lose a turn', 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 600, 750, 800, 850, 900]
 #create word list
-word = 'difference'
+word = 'test'
 consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z']
 vowels = ['a','e','i','o','u']
 correctLetter = []
 #set up accounts for players' money
 account1 = 0
-account2 = []
-account3 = []
+account2 = 0
+account3 = 0
 
-import random
+players = ['one','two','three']
+
+for i, player in enumerate(players):
+    print(f'Player {i}: {player}')
 
 #Rounds 1 and 2:
 #randomly choose word and display with underscores representing each unrevealed letter
 #initialize blank word list with "_"
 
-rounds = list(('round1','round2'))
-for i in rounds:
+    import random
 
-    wordSolved = False
+    for char in word:
+        correctLetter.append('_')
 
-    while not wordSolved:  
-        for char in word:
-            correctLetter.append('_')
+        wordSolved = False
 
-        players = list(('player1','player2','player3'))
-        while i in players:
+    rounds = list(('round1','round2'))
+    for i in rounds:        
+            
+            while not wordSolved:        
 
             #player 1's turn
             #ask if they want to solve, spin, or buy a vowel
@@ -41,13 +44,13 @@ for i in rounds:
                         account1 -= account1
                         print('Lose your turn and money')
                         print(account1)
-                        continue
+                        #continue
                     #loseTurn: lose turn but keep money
                     elif wedge == 'lose a turn':
                         account1 += 0            
                         print('Lose your turn')
                         print(account1)
-                        continue
+                        #continue
                     else:
                         #show letters, multiply wedge by number of instances in word and add to account
                         spinInput = (input('Guess a consonant: '))
@@ -60,14 +63,12 @@ for i in rounds:
                                         print('You have $',account1)
                             else:
                                 print('That letter is not in the word. Next player.')
-                                continue
+                                #continue
                         else:
                             print('That is not a consonant.  Lose a turn.')
-                            continue
+                            #continue
                         print(correctLetter)
                         print(spinInput)
-                        
-                
 
                 #if buy a vowel, check that account has at least $250
                 elif userInput == 'v':
@@ -85,10 +86,10 @@ for i in rounds:
                             
                             else:
                                 print('That letter is not in the word.')
-                                continue
+                                #continue
                     else:
                             print('That is not a vowel.  Lose a turn.')
-                            continue
+                            #continue
                     print(correctLetter)
                     print(vowelInput)
                 
@@ -101,9 +102,9 @@ for i in rounds:
                     else:
                         #loseTurn
                         print('That is not the word. Your turn is over.')
-                        continue
+                        #continue
 
                 else:
                     print('Choose spin, buy a vowel, or solve the puzzle.')
-        else:
-            print('Next player')            
+    else:
+        print('Next player')            

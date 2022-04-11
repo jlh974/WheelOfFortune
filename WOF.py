@@ -10,24 +10,24 @@ account1 = 0
 account2 = 0
 account3 = 0
 
-players = ['one','two','three']
-
-for i, player in enumerate(players):
-    print(f'Player {i}: {player}')
-
 #Rounds 1 and 2:
 #randomly choose word and display with underscores representing each unrevealed letter
 #initialize blank word list with "_"
 
-    import random
+import random
 
-    for char in word:
-        correctLetter.append('_')
+for char in word:
+    correctLetter.append('_')
 
-        wordSolved = False
+    wordSolved = False
 
     rounds = list(('round1','round2'))
-    for i in rounds:        
+    for i in rounds:
+
+        players = ['one','two','three']
+
+        for i, player in enumerate(players):
+            print(f'Player {i}: {player}')        
             
             while not wordSolved:        
 
@@ -44,7 +44,7 @@ for i, player in enumerate(players):
                         account1 -= account1
                         print('Lose your turn and money')
                         print(account1)
-                        #continue
+                        continue
                     #loseTurn: lose turn but keep money
                     elif wedge == 'lose a turn':
                         account1 += 0            
@@ -63,7 +63,7 @@ for i, player in enumerate(players):
                                         print('You have $',account1)
                             else:
                                 print('That letter is not in the word. Next player.')
-                                #continue
+                                continue
                         else:
                             print('That is not a consonant.  Lose a turn.')
                             #continue
@@ -106,5 +106,8 @@ for i, player in enumerate(players):
 
                 else:
                     print('Choose spin, buy a vowel, or solve the puzzle.')
+
+            else:
+                print('End of round 2')
     else:
         print('Next player')            

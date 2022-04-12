@@ -16,18 +16,23 @@ account3 = 0
 
 import random
 
+#f = open(r'Documents\Repos\wheel-of-fortune\word-list.txt')
+#word = f.readlines()
+#f.close
+
 for char in word:
     correctLetter.append('_')
 
     wordSolved = False
 
-    rounds = list(('round1','round2'))
+    rounds = ['round1','round2']
     for i in rounds:
+        print(i)
 
-        players = ['one','two','three']
+        players = ['Joe','Mary','Jill']
 
         for i, player in enumerate(players):
-            print(f'Player {i}: {player}')        
+            #print(f'Player {i}: {player}')        
             
             while not wordSolved:        
 
@@ -105,9 +110,4 @@ for char in word:
                         #continue
 
                 else:
-                    print('Choose spin, buy a vowel, or solve the puzzle.')
-
-            else:
-                print('End of round 2')
-    else:
-        print('Next player')            
+                    print('Choose spin, buy a vowel, or solve the puzzle.')           

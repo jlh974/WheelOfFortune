@@ -16,23 +16,17 @@ account3 = 0
 
 import random
 
-f = open(r'Documents\Repos\wheel-of-fortune\word-list.txt')
-wordList = f.readlines()
+f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
+wordList = f.read().splitlines()
 f.close
 
 for line in wordList:
     word = random.choice(wordList)
-    
-
-#for line in wordList:
-    #key=str(str(line))
-    #word[key]=line
-#for key,value in word.items():
-    #exec(f'[key]=[value]')
-
+print(word)
 
 for char in word:
     correctLetter.append('_')
+
 
 wordSolved = False
 

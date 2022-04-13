@@ -16,29 +16,29 @@ account3 = 0
 
 import random
 
-f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
-wordList = f.read().splitlines()
-f.close
-
-for line in wordList:
-    word = random.choice(wordList)
-print(word)
-
-for char in word:
-    correctLetter.append('_')
-
-
-wordSolved = False
-
 rounds = ['round1','round2']
 for i in rounds:
     print(i)
 
-    #players = ['Joe','Mary','Jill']
+    f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
+    wordList = f.read().splitlines()
+    f.close
 
-    #for i, player in enumerate(players):
-        #print(f'Player {i}: {player}')        
-        
+    for line in wordList:
+        word = random.choice(wordList)
+    print(word)
+
+    for char in word:
+        correctLetter.append('_')
+
+
+    wordSolved = False
+
+        #players = ['Joe','Mary','Jill']
+
+        #for i, player in enumerate(players):
+            #print(f'Player {i}: {player}')        
+            
     while not wordSolved:        
 
     #player 1's turn
@@ -54,7 +54,7 @@ for i in rounds:
                 account1 -= account1
                 print('Lose your turn and money')
                 print(account1)
-                continue
+                #continue
             #loseTurn: lose turn but keep money
             elif wedge == 'lose a turn':
                 account1 += 0            
@@ -73,7 +73,7 @@ for i in rounds:
                                 print('You have $',account1)
                     else:
                         print('That letter is not in the word. Next player.')
-                        continue
+                        #continue
                 else:
                     print('That is not a consonant.  Lose a turn.')
                     #continue

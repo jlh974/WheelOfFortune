@@ -1,15 +1,10 @@
 #create wheel (contains bankrupt, lose a turn, and 17 dollar amounts)
 wheel = ['bankrupt', 'lose a turn', 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 600, 750, 800, 850, 900]
 #create word list
-word=[]
+word= []
 consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z']
 vowels = ['a','e','i','o','u']
 correctLetter = []
-
-
-#Rounds 1 and 2:
-#randomly choose word and display with underscores representing each unrevealed letter
-#initialize blank word list with "_"
 
 import random
 
@@ -17,31 +12,39 @@ import random
 players = ['player1', 'player2', 'player3']
 banks = [0, 0, 0]
 
+f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
+wordList = f.read().splitlines()
+f.close
+
+#Rounds 1 and 2:
+#randomly choose word and display with underscores representing each unrevealed letter
+#initialize blank word list with "_"
+
 rounds = ['round1','round2']
 for i in rounds:
     print(i)
 
-    f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
-    wordList = f.read().splitlines()
-    f.close
-
+    
     for line in wordList:
-        word = random.choice(wordList)
+        word = random.choice(wordList) 
     print(word)
 
+    
     for char in word:
+        
         correctLetter.append('_')
+        
 
-    wordSolved = False    
+    wordSolved = False
 
     while not wordSolved:
-               
+                
         playerBank = zip(players, banks)
         for i, players in enumerate(players):
             print(f'Player {i+1} is up')
             print(banks)
-            
-                      
+                
+                        
             #player 1's turn
             #ask if they want to solve, spin, or buy a vowel        
             userInput = (input('Do you want to spin (type "s"), buy a vowel (type "v"), or solve the puzzle (type "p")?'))
@@ -53,7 +56,7 @@ for i in rounds:
                     if wedge == 'bankrupt':
                         banks[i] -= banks[i]
                         print('Lose your turn and money')
-                        print(players)
+                        #print(players)
                         
                     #loseTurn: lose turn but keep money
                     elif wedge == 'lose a turn':
@@ -106,9 +109,11 @@ for i in rounds:
             elif userInput == 'p':
                     wordGuess = (input('Solve the puzzle: '))
                     if word == wordGuess:
+                        correctLetter.clear()
                         wordSolved = True
                         print('Congratulations, you win the round!')
                         break
+
                     else:
                         #loseTurn
                         print('That is not the word. Your turn is over.')                        
@@ -116,5 +121,4 @@ for i in rounds:
             else:
                     print('Choose spin, buy a vowel, or solve the puzzle.')
 
-    else:
-        print('Round over!')
+        

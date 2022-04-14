@@ -12,10 +12,6 @@ import random
 players = ['player1', 'player2', 'player3']
 banks = [0, 0, 0]
 
-f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
-wordList = f.read().splitlines()
-f.close
-
 #Rounds 1 and 2:
 #randomly choose word and display with underscores representing each unrevealed letter
 #initialize blank word list with "_"
@@ -24,14 +20,15 @@ rounds = ['round1','round2']
 for i in rounds:
     print(i)
 
+    f = open(R'Documents\Repos\wheel-of-fortune\word-list.txt')
+    wordList = f.read().splitlines()
+    f.close
     
     for line in wordList:
-        word = random.choice(wordList) 
-    print(word)
+        word = random.choice(wordList)
+    print (word)  
 
-    
-    for char in word:
-        
+    for char in word:        
         correctLetter.append('_')
         
 
@@ -40,7 +37,7 @@ for i in rounds:
     while not wordSolved:
                 
         playerBank = zip(players, banks)
-        for i, players in enumerate(players):
+        for i, player in enumerate(players):
             print(f'Player {i+1} is up')
             print(banks)
                 
@@ -121,4 +118,3 @@ for i in rounds:
             else:
                     print('Choose spin, buy a vowel, or solve the puzzle.')
 
-        
